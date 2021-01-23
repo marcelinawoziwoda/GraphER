@@ -1,0 +1,9 @@
+﻿a.HyperLinkHover {
+    cursor: pointer;
+}
+
+    a.HyperLinkHover:visited {
+        cursor: pointer;
+        color: Purple;
+    }
+
