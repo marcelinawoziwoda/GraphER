@@ -83,7 +83,7 @@
                     <ul class="nav navbar-nav navbar-middle">
                         <li><input type="text" style="margin-top:10px;" class="form-control search-slt" placeholder="Wyszukaj.."></li>
                         <li> &nbsp;&nbsp;   </li>
-                        <li><asp:Button Text ="Szukaj" style="margin-top:9px;" CssClass="btn btn-primary" Font-size="Larger"  runat="server" Width="110px" PostBackUrl="~/Szukaj_log.aspx" /></li>
+                        <li><asp:Button Text ="Szukaj" style="margin-top:9px;" CssClass="btn btn-primary" Font-size="Larger"  runat="server" Width="110px"  /></li>
 
                         </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -146,8 +146,30 @@
                         </section>
                     </div>
                 </div>
+
      </section>
     
+
+        <asp:GridView ID="GridView2" runat="server" DataKeyNames="id" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" Width="1161px">
+        <Columns>
+            <asp:CommandField ShowDeleteButton="True" />
+            <asp:BoundField DataField="rezerwacja_czas_stop" HeaderText="rezerwacja_czas_stop" SortExpression="rezerwacja_czas_stop" />
+            <asp:BoundField DataField="rezerwacja_czas_start" HeaderText="rezerwacja_czas_start" SortExpression="rezerwacja_czas_start" />
+            <asp:BoundField DataField="opis" HeaderText="opis" SortExpression="opis" />
+            <asp:BoundField DataField="rezerwacja_data" HeaderText="rezerwacja_data" SortExpression="rezerwacja_data" />
+            <asp:BoundField DataField="email_specjalista" HeaderText="email_specjalista" SortExpression="email_specjalista" />
+            
+        </Columns>
+    </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GraphERConnectionString %>" SelectCommand="SELECT [rezerwacja_czas_stop], [rezerwacja_czas_start], [opis], [rezerwacja_data], [email_specjalista], [id] FROM [Rezerwacja] WHERE ([email_klient] = @email_klient)"
+        DeleteCommand="delete FROM Rezerwacja where id=@id">
+        <SelectParameters>
+            <asp:SessionParameter Name="email_klient" SessionField="email" Type="String" />
+        </SelectParameters>
+        <DeleteParameters>
+        <asp:Parameter Name="id" Type="Int32" />
+    </DeleteParameters>
+    </asp:SqlDataSource>
     <asp:Calendar ID="Calendar1" align="center"  runat="server" BackColor="#222222" Font-Size="15pt" ForeColor="#cebb68" CellPadding="10" CellSpacing="10" NextMonthText="Następny" PrevMonthText="Poprzedni" ShowGridLines="True" >
         <DayHeaderStyle Font-Bold="True" Font-Size="25pt" ForeColor="White"   />
         <DayStyle  font-size="25pt"/>
@@ -163,15 +185,32 @@
               <div class ="form-group">
 <asp:Label Text ="Wpisz e-mail specjalisty" runat="server" Font-Bold="true" Font-Size="Small" /> 
 <asp:TextBox ID="email_specjalista" runat="server" Enabled="true" TextMode="Email" CssClass="form-control input-sm"  />
-                                        <br />
- <asp:Button  ID="Button1" runat="server"  CssClass="btn btn-primary" CausesValidation="True"  Font-size="Larger"  Width="225px" Text="Sprawdź dostępność" OnClick="Button1_Click" />
-                  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" visible="false"  DataSourceID="SqlDataSource1">
+                                     
+ <asp:Button  ID="dostepnosc" runat="server"  CssClass="btn btn-primary" CausesValidation="True"  Font-size="Larger"  Width="225px" Text="Sprawdź dostępność"  OnClick="Button1_Click" />
+                  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" visible="False"  DataSourceID="SqlDataSource1">
                       <Columns>
-                          <asp:BoundField DataField="email" HeaderText="email" ReadOnly="True" SortExpression="email" />
+                          <asp:BoundField DataField="rezerwacja_data" HeaderText="rezerwacja_data" SortExpression="rezerwacja_data" />
+                          <asp:BoundField DataField="rezerwacja_czas_start" HeaderText="rezerwacja_czas_start" SortExpression="rezerwacja_czas_start" />
+                          <asp:BoundField DataField="rezerwacja_czas_stop" HeaderText="rezerwacja_czas_stop" SortExpression="rezerwacja_czas_stop" />
                       </Columns>
                   </asp:GridView>
-                  <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GraphERConnectionString %>" SelectCommand="SELECT [email] FROM [Rejestracja_G]"></asp:SqlDataSource>
-           </div>
+                  <br />
+                  <asp:Label ID="czas_start" Visible="false" runat="server" Text="Godzina początkowa" Font-Bold="true"></asp:Label>
+                  <br/>
+                  <Input type="time" ID="godz_pocz" runat="server" textmode="Time" visible="false" />
+                  <br/>
+                  <asp:Label ID="czas_koniec" runat="server" Visible="false" Text="Godzina końca" Font-Bold="true"></asp:Label>
+                  <br/>
+                  <Input type="time" ID="godz_kon" runat="server" textmode="Time" visible="false"/>
+                  <br/>
+                  <asp:Button ID="rezerwuj" runat="server" OnClick="Button2_Click" CssClass="btn btn-primary" CausesValidation="True"  Font-size="Larger"  Width="225px" Text="Rezerwuj" Visible="false" />
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GraphERConnectionString %>" SelectCommand="SELECT [rezerwacja_data], [rezerwacja_czas_start], [rezerwacja_czas_stop] FROM [Rezerwacja] WHERE ([email_specjalista] = @email_specjalista)">
+                      <SelectParameters>
+                          <asp:ControlParameter ControlID="email_specjalista" Name="email_specjalista" PropertyName="Text" Type="String" />
+                      </SelectParameters>
+                  </asp:SqlDataSource>
+           
+              </div>
 
       </div>                             
   </div>

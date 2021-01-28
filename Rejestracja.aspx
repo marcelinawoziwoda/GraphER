@@ -79,7 +79,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><input type="text" style="margin-top:10px;" class="form-control search-slt" placeholder="Wyszukaj.."></li>
                         <li> &nbsp;&nbsp;   </li>
-                        <li><asp:Button Text ="Szukaj" style="margin-top:9px;" CssClass="btn btn-primary" Font-size="Larger"  runat="server" Width="100px" PostBackUrl="~/Szukaj.aspx" /></li>
+                        <li><asp:Button Text ="Szukaj" style="margin-top:9px;" CssClass="btn btn-primary" Font-size="Larger"  runat="server" Width="100px"  /></li>
                    <li> &nbsp;&nbsp;   </li>
                              <a class="navbar-brand" runat="server" href="~/Logowanie.aspx">
                              <img style="max-width:35px; margin-top: -7px;" src="/images/ikona.png" alt="Kliknij, by przejść do konta." title="Kliknij, by przejść do konta.">
@@ -180,9 +180,8 @@
                             <div class="row">
                                 <div class ="col-md-4 col-md-offset-1">
                                     <div class ="form-group">
-                                        <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="False" Text="            Zaznacz, jeśli rejestrujesz się jako usługodawca" TextAlign="Right"  />
-
-                                    </div>
+                                        <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="False" Text="            Zaznacz, jeśli rejestrujesz się jako usługodawca" TextAlign="Right" CausesValidation="false" checked="false" />
+                                     </div>
                                 </div>
                                 
                             </div>
@@ -271,7 +270,7 @@
                                     <div class ="col-md-4 col-md-offset-1">
                                         <div class ="form-group">
                                          <div class="col-md-8 col-md-offset-2">
-                                                <asp:Label Text="*Klikając zarejestruj się, akceptujesz " runat="server" Font-Size="10px" /><asp:HyperLink ID="HyperLink2" runat="server" cssClass="HyperLinkHover" Font-Size="9px" runat="server">regulamin.</asp:HyperLink> 
+                                                <asp:Label Text="*Klikając zarejestruj się, akceptujesz " runat="server" Font-Size="10px" /><asp:HyperLink ID="HyperLink2" runat="server" cssClass="HyperLinkHover" Font-Size="9px" >regulamin.</asp:HyperLink> 
                                                <br />
                                              
                                            <asp:Button ID="Rejestracja_button" Text ="Zarejestruj się"  CssClass="btn btn-primary" CausesValidation="True"  Font-size="Larger" runat="server" Width="225px" OnClick="Rejestracja_button_Click" />

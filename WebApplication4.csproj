@@ -167,6 +167,9 @@
     <Content Include="images\Grapher logo-non.png" />
     <Content Include="images\Grapher logo.png" />
     <Content Include="images\ikona.png" />
+    <Content Include="images\img.jpg" />
+    <Content Include="images\img2.jpg" />
+    <Content Include="images\img3.jpg" />
     <Content Include="images\informacje.png" />
     <Content Include="images\jumbotron.png" />
     <Content Include="images\jumpotron-panel.png" />
@@ -425,8 +428,6 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="SideMasterLog.aspx" />
     <Content Include="Site.Master" />
-    <Content Include="Szukaj.aspx" />
-    <Content Include="Szukaj_log.aspx" />
     <Content Include="User.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -516,20 +517,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Szukaj.aspx.cs">
-      <DependentUpon>Szukaj.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Szukaj.aspx.designer.cs">
-      <DependentUpon>Szukaj.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Szukaj_log.aspx.cs">
-      <DependentUpon>Szukaj_log.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Szukaj_log.aspx.designer.cs">
-      <DependentUpon>Szukaj_log.aspx</DependentUpon>
     </Compile>
     <Compile Include="User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>

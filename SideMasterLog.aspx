@@ -66,7 +66,7 @@
                     <ul class="nav navbar-nav navbar-middle">
                         <li><input type="text" style="margin-top:10px;" class="form-control search-slt" placeholder="Wyszukaj.."></li>
                         <li> &nbsp;&nbsp;   </li>
-                        <li><asp:Button Text ="Szukaj" style="margin-top:9px;" CssClass="btn btn-primary" Font-size="Larger"  runat="server" Width="110px" PostBackUrl="~/Szukaj_log.aspx" /></li>
+                        <li><asp:Button Text ="Szukaj" style="margin-top:9px;" CssClass="btn btn-primary" Font-size="Larger"  runat="server" Width="110px"  /></li>
                         
                         </ul>
                     <ul class="nav navbar-nav navbar-right">
